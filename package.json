@@ -2,9 +2,15 @@
   "name": "react-web-camera",
   "version": "0.0.1",
   "description": "a simple react component for take a picture or videos with getUserMedia API",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d ./lib",
+    "build-watch": "babel src -d ./lib -w",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "prepublish": "babel src -d ./lib",
+    "test-dev": "jest --watch --coverage",
+    "test": "jest -u"
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,34 @@
   "bugs": {
     "url": "https://github.com/dielduarte/react-web-camera/issues"
   },
-  "homepage": "https://github.com/dielduarte/react-web-camera#readme"
+  "homepage": "https://github.com/dielduarte/react-web-camera#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^21.2.1",
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.2.0",
+    "babel-preset-react": "^6.24.1",
+    "@storybook/react": "3.2.17"
+  },
+  "dependencies": {
+    "react": "^16.2.0"
+  },
+  "files": [
+    "lib/"
+  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/lcov-report/**",
+      "!**/node_modules/**",
+      "!**/stories/**",
+      "!**/Example/**",
+      "!**/docs/**",
+      "!**/.storybook/**",
+      "!**/lib/**"
+    ]
+  }
 }
